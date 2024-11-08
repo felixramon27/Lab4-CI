@@ -24,6 +24,9 @@ jobs:
       - name: Install dependencies
         run: |
           pipenv install --deploy --dev
+      - name: Install pytest-cov
+        run: |
+          pipenv install pytest-cov
       - name: Run test suite
         run: |
           pipenv run pytest --cov
