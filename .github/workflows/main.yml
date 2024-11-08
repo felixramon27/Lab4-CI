@@ -15,6 +15,8 @@ jobs:
           python-version: "3.11"
       - name: Run black formatter
         uses: rickstaa/action-black@v1.3.3
+      - name: Pytest Coverage Commentator
+        uses: coroo/pytest-coverage-commentator@v1.0.2
       - name: Install pipenv
         run: |
           python -m pip install --upgrade pipenv wheel
@@ -24,6 +26,9 @@ jobs:
       - name: Install dependencies
         run: |
           pipenv install --deploy --dev
+      - name: Install pytest-cov
+        run: |
+          pipenv install pytest-cov
       - name: Run test suite
         run: |
-          pipenv run pytest
+          pipenv run pytest --cov
